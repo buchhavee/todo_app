@@ -1,15 +1,17 @@
 "use strict";
 
 // 1. Hent data fra localStorage
-// Henter eksisterende todos fra browserens localStorage, så de bevares mellem besøg.
+// Henter eksisterende todos fra browserens localStorage.
 const toDoArr = JSON.parse(localStorage.getItem("localstorage") || "[]");
 
 // 2. Vælg DOM-elementer
-// Finder de nødvendige HTML-elementer, så de kan bruges i koden.
+// Henviser til de nødvendige HTML-elementer, så de kan bruges i koden.
 const submit = document.querySelector("#submit");
 const todoNameInput = document.querySelector("#todo-name-input");
 const todoContainer = document.querySelector(".todo-list");
 const doneContainer = document.querySelector(".done-list");
+const deleteBtn = li.querySelector(".delete-btn");
+const clearBtn = document.getElementById("clear");
 
 // 3. Event listeners til at oprette ny todo
 // Gør det muligt at tilføje en todo med klik eller Enter.
@@ -38,7 +40,7 @@ function submitTodo(evt) {
 }
 
 // 5. Initiel rendering af todos
-// Viser todos ved opstart
+// Viser todos ved load af siden
 writeTodos();
 
 // 6. Funktion til at vise og opdatere todos
@@ -101,11 +103,9 @@ function writeTodos() {
 
     // 8. Slet-knap: fjern todo
     // Når brugeren klikker på slet, fjernes todoen fra arrayet og listen opdateres
-    const deleteBtn = li.querySelector(".delete-btn");
     deleteBtn.addEventListener("click", (evt) => {
       const idSlet = toDoArr.findIndex((todo) => todo.id === li.dataset.id);
-      if (idSlet !== -1);
-      {
+      if (idSlet !== -1) {
         toDoArr.splice(idSlet, 1);
         writeTodos();
       }
@@ -121,7 +121,6 @@ function writeTodos() {
 
   // 9. Clear-knap: ryd alle todos
   // Når brugeren klikker på clear, slettes alle todos og localStorage tømmes
-  const clearBtn = document.getElementById("clear");
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
       localStorage.clear();
