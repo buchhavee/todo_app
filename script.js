@@ -1,10 +1,10 @@
 "use strict";
 
-// 1. Hent data fra localStorage
+// Hent data fra localStorage
 // Henter eksisterende todos fra browserens localStorage.
 const toDoArr = JSON.parse(localStorage.getItem("localstorage") || "[]");
 
-// 2. Vælg DOM-elementer
+// Vælg DOM-elementer
 // Henviser til de nødvendige HTML-elementer, så de kan bruges i koden.
 const submit = document.querySelector("#submit");
 const todoNameInput = document.querySelector("#todo-name-input");
@@ -13,7 +13,7 @@ const doneContainer = document.querySelector(".done-list");
 const deleteBtn = li.querySelector(".delete-btn");
 const clearBtn = document.getElementById("clear");
 
-// 3. Event listeners til at oprette ny todo
+// Event listeners til at oprette ny todo
 // Gør det muligt at tilføje en todo med klik eller Enter.
 submit.addEventListener("click", submitTodo);
 todoNameInput.addEventListener("keydown", (evt) => {
@@ -22,7 +22,7 @@ todoNameInput.addEventListener("keydown", (evt) => {
   }
 });
 
-// 4. Tilføj ny todo
+// Tilføj ny todo
 // Funktion der opretter et todo-objekt og tilføjer det til listen.
 function submitTodo(evt) {
   const todo = {
@@ -39,11 +39,11 @@ function submitTodo(evt) {
   writeTodos();
 }
 
-// 5. Initiel rendering af todos
+// Initiel rendering af todos
 // Viser todos ved load af siden
 writeTodos();
 
-// 6. Funktion til at vise og opdatere todos
+// Funktion til at vise og opdatere todos
 function writeTodos() {
   // Gemmer alle todos i localStorage
   localStorage.setItem("localstorage", JSON.stringify(toDoArr));
@@ -83,7 +83,7 @@ function writeTodos() {
   </div>
 `;
 
-    // 7. Checkbox: marker som færdig/ikke færdig
+    // Checkbox: marker som færdig/ikke færdig
     // Når brugeren klikker på checkboxen, opdateres done-status og evt. afslutningsdato
     const checkbox = li.querySelector("input");
     checkbox.addEventListener("click", (evt) => {
@@ -101,7 +101,7 @@ function writeTodos() {
       writeTodos();
     });
 
-    // 8. Slet-knap: fjern todo
+    // Slet-knap: fjern todo
     // Når brugeren klikker på slet, fjernes todoen fra arrayet og listen opdateres
     deleteBtn.addEventListener("click", (evt) => {
       const idSlet = toDoArr.findIndex((todo) => todo.id === li.dataset.id);
@@ -119,7 +119,7 @@ function writeTodos() {
     }
   });
 
-  // 9. Clear-knap: ryd alle todos
+  // Clear-knap: ryd alle todos
   // Når brugeren klikker på clear, slettes alle todos og localStorage tømmes
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
