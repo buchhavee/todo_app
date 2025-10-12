@@ -10,7 +10,6 @@ const submit = document.querySelector("#submit");
 const todoNameInput = document.querySelector("#todo-name-input");
 const todoContainer = document.querySelector(".todo-list");
 const doneContainer = document.querySelector(".done-list");
-const deleteBtn = li.querySelector(".delete-btn");
 const clearBtn = document.getElementById("clear");
 
 // Event listeners til at oprette ny todo
@@ -103,6 +102,7 @@ function writeTodos() {
 
     // Slet-knap: fjern todo
     // Når brugeren klikker på slet, fjernes todoen fra arrayet og listen opdateres
+    const deleteBtn = li.querySelector(".delete-btn");
     deleteBtn.addEventListener("click", (evt) => {
       const idSlet = toDoArr.findIndex((todo) => todo.id === li.dataset.id);
       if (idSlet !== -1) {
